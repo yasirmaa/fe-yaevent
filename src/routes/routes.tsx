@@ -1,9 +1,9 @@
 import RootLayout from '@/components/layouts/RootLayout';
-import DashboardPage from '@/pages/admin/DashboardPage';
-import HomePage from '@/pages/HomePage';
-import NotFoundPage from '@/pages/NotFoundPage';
 import { createBrowserRouter } from 'react-router-dom';
-import * as Auth from '@/pages/index';
+import * as All from '@/pages/index';
+import * as Admin from '@/pages/admin/index';
+import GuestGuard from '@/components/guards/GuestGuard';
+import AuthGuard from '@/components/guards/AuthedGuard';
 
 export const router = createBrowserRouter([
   {
@@ -12,17 +12,27 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: <All.HomePage />,
       },
       {
-        path: '/dashboard',
-        element: <DashboardPage />,
+        element: <GuestGuard />,
+        children: [
+          {
+            path: '/login',
+            element: <All.LoginPage />,
+          },
+        ],
       },
       {
-        path: '/login',
-        element: <Auth.LoginPage />,
+        element: <AuthGuard />,
+        children: [
+          {
+            path: '/dashboard',
+            element: <Admin.DashboardPage />,
+          },
+        ],
       },
     ],
-    errorElement: <NotFoundPage />,
+    errorElement: <All.NotFoundPage />,
   },
 ]);
