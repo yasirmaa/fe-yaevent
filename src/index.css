@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -110,11 +111,21 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@theme {
+  --color-navy-primary: #151a26;
+  --color-navy-secondary: #252837;
+  --color-gray-primary: #a3a5aa;
+  --color-gray-secondary: #dfdfdf;
+  --color-green-primary: #01fb34;
+  --font-poppins: 'Poppins', sans-serif;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
+    font-family: var(--font-poppins);
     @apply bg-background text-foreground;
   }
 }

@@ -1,21 +1,19 @@
+import { Footer } from '@/components/organisms/Footer/Footer';
+import { Brand } from '@/components/organisms/landing/Brand/Brand';
+import { Browse } from '@/components/organisms/landing/Browse/Browse';
+import { Hero } from '@/components/organisms/landing/Hero/Hero';
 import { Navbar } from '@/components/organisms/Navbar/Navbar';
-import useToast from '@/hooks/useToast';
 import 'react-toastify/dist/ReactToastify.css';
 
 const HomePage = () => {
-  const { toastSuccess } = useToast();
-
   return (
-    <>
+    <div className="overflow-hidden">
       <Navbar />
-      <h1 className="text-2xl font-bold">Home Page</h1>
-      <button
-        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-        onClick={() => toastSuccess('Welcome!', 'This is a success message from the Home Page.')}
-      >
-        Show Toast
-      </button>
-    </>
+      <Hero />
+      <Brand />
+      <Browse />
+      <Footer />
+    </div>
   );
 };
 
